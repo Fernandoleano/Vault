@@ -1,0 +1,30 @@
+/* Vault Chrome Extension - Content Styles */
+
+/* Vault notification animation */
+@keyframes vaultSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vaultSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Highlight filled fields */
+.vault-filled {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4) !important;
+  transition: box-shadow 0.3s ease !important;
+}

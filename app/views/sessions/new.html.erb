@@ -1,0 +1,71 @@
+<div class="min-h-[80vh] flex items-center justify-center">
+  <div class="w-full max-w-md">
+    <!-- Logo & Header -->
+    <div class="text-center mb-10 animate-fade-in-down">
+      <div class="relative inline-block">
+        <div class="w-24 h-24 bg-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-indigo-500/40 animate-pulse-glow">
+          <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+          </svg>
+        </div>
+        <div class="absolute -inset-4 bg-indigo-500/10 rounded-full blur-2xl -z-10"></div>
+      </div>
+      <h1 class="text-4xl font-bold text-white tracking-tight">Welcome Back</h1>
+      <p class="text-gray-400 mt-3 text-lg">Sign in to access your secure vault</p>
+    </div>
+
+    <!-- Login Form Card -->
+    <div class="glass-card p-8 shadow-2xl animate-fade-in-up delay-200">
+      <%= form_with(url: session_path, class: "space-y-6") do |form| %>
+        <div class="space-y-2">
+          <%= form.label :email_address, "Email Address", class: "block text-sm font-medium text-gray-300" %>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+            </div>
+            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", class: "w-full bg-gray-950/50 border border-gray-700 rounded-xl pl-12 pr-4 py-3.5 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all placeholder-gray-500", placeholder: "you@example.com" %>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <%= form.label :password, class: "block text-sm font-medium text-gray-300" %>
+            <%= link_to "Forgot password?", new_password_path, class: "text-sm text-indigo-400 hover:text-indigo-300 transition-colors hover:underline" %>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            </div>
+            <%= form.password_field :password, required: true, autocomplete: "current-password", class: "w-full bg-gray-950/50 border border-gray-700 rounded-xl pl-12 pr-4 py-3.5 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all placeholder-gray-500", placeholder: "Enter your password" %>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <%= form.submit "Sign In", class: "w-full bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-4 rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/30 cursor-pointer hover:scale-[1.02] active:scale-[0.98] hover:shadow-indigo-500/50 btn-glow" %>
+        </div>
+      <% end %>
+
+      <!-- Divider -->
+      <div class="relative my-8">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-800"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-4 bg-gray-900/50 text-gray-500">Secure & Encrypted</span>
+        </div>
+      </div>
+
+      <!-- Security badge -->
+      <div class="flex items-center justify-center gap-2 text-gray-500 text-sm">
+        <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        <span>256-bit AES encryption</span>
+      </div>
+    </div>
+
+    <!-- Sign up link -->
+    <p class="text-center mt-8 text-gray-400 animate-fade-in delay-300">
+      Don't have an account?
+      <%= link_to "Create one for free", new_registration_path, class: "text-indigo-400 hover:text-indigo-300 font-semibold transition-colors ml-1 hover:underline" %>
+    </p>
+  </div>
+</div>

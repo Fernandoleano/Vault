@@ -1,0 +1,101 @@
+<div class="min-h-[80vh] flex items-center justify-center">
+  <div class="w-full max-w-md">
+    <!-- Logo & Header -->
+    <div class="text-center mb-10 animate-fade-in-down">
+      <div class="relative inline-block">
+        <div class="w-24 h-24 bg-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-indigo-500/40 animate-pulse-glow">
+          <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+          </svg>
+        </div>
+        <div class="absolute -inset-4 bg-indigo-500/10 rounded-full blur-2xl -z-10"></div>
+      </div>
+      <h1 class="text-4xl font-bold text-white tracking-tight">Create Account</h1>
+      <p class="text-gray-400 mt-3 text-lg">Start securing your digital life today</p>
+    </div>
+
+    <!-- Registration Form Card -->
+    <div class="glass-card p-8 shadow-2xl animate-fade-in-up delay-200">
+      <%= form_with(model: @user, url: registration_path, class: "space-y-5") do |form| %>
+        <% if @user.errors.any? %>
+          <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-4 animate-fade-in">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <ul class="text-red-400/90 text-sm space-y-1">
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="space-y-2">
+          <%= form.label :email_address, "Email Address", class: "block text-sm font-medium text-gray-300" %>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+            </div>
+            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", class: "w-full bg-gray-950/50 border border-gray-700 rounded-xl pl-12 pr-4 py-3.5 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all placeholder-gray-500", placeholder: "you@example.com" %>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <%= form.label :password, "Password", class: "block text-sm font-medium text-gray-300" %>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            </div>
+            <%= form.password_field :password, required: true, autocomplete: "new-password", class: "w-full bg-gray-950/50 border border-gray-700 rounded-xl pl-12 pr-4 py-3.5 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all placeholder-gray-500", placeholder: "Create a strong password" %>
+          </div>
+          <p class="text-xs text-gray-500 flex items-center gap-1.5 mt-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Minimum 8 characters required
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <%= form.label :password_confirmation, "Confirm Password", class: "block text-sm font-medium text-gray-300" %>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+            <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "w-full bg-gray-950/50 border border-gray-700 rounded-xl pl-12 pr-4 py-3.5 text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all placeholder-gray-500", placeholder: "Confirm your password" %>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <%= form.submit "Create Account", class: "w-full bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-4 rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/30 cursor-pointer hover:scale-[1.02] active:scale-[0.98] hover:shadow-indigo-500/50 btn-glow" %>
+        </div>
+      <% end %>
+
+      <!-- Features list -->
+      <div class="mt-8 pt-6 border-t border-gray-800">
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div class="flex items-center gap-2 text-gray-400">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <span>256-bit encryption</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <span>Cross-platform</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <span>Zero knowledge</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-400">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <span>Free forever</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign in link -->
+    <p class="text-center mt-8 text-gray-400 animate-fade-in delay-300">
+      Already have an account?
+      <%= link_to "Sign in", new_session_path, class: "text-indigo-400 hover:text-indigo-300 font-semibold transition-colors ml-1 hover:underline" %>
+    </p>
+  </div>
+</div>
